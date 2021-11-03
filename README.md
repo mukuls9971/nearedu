@@ -4,6 +4,8 @@ Two directories:
 1. AssemblyCode
 2. rust
 
+Video Description: https://www.loom.com/share/985a11930dc14150ae668ceeafc21df8
+
 ## AssemblyCode
 
 ### starter-kit
@@ -63,3 +65,4 @@ near view $ID ft_balance_of '{"account_id": "'bob.$ID'"}'
 near call $ID ft_transfer '{"receiver_id": "'bob.$ID'", "amount": "5"}' --accountId $ID --amount 0.000000000000000000000001
 
 ```
+
