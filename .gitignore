@@ -5,6 +5,7 @@ out/
 .DS_Store
 
 *.log
+*.wasm
 **/target/
 
 .vscode
