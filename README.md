@@ -1,12 +1,14 @@
 # Directory structure
 
 Two directories: 
-1. AssemblyCode
-2. rust
+1. AssemblyCode: Contains the assemblyCode contracts
+2. Rust: Contains the contracts written in rust 
+3. Vue: Contains the frontend code
 
-Video Description: https://www.loom.com/share/985a11930dc14150ae668ceeafc21df8
+Video Description NCD-1: https://www.loom.com/share/985a11930dc14150ae668ceeafc21df8
+Video Description NCD-2: 
 
-## AssemblyCode
+# AssemblyCode
 
 ### starter-kit
 1. Started with the hello-world script as instructed by our instructor during our exploratory call. 
@@ -31,7 +33,7 @@ After this I explored the nomicon.io. It contains a good description around FT a
 
 This was the concept which took a lot of my time. But eventually I understood how this interface along with FT is able to offload the rent to the account holder. 
 
-## Rust
+# Rust
 
 I used rust because it is written multiple times within the documentation that for high value contracts, we should use only rust language.
 
@@ -66,3 +68,44 @@ near call $ID ft_transfer '{"receiver_id": "'bob.$ID'", "amount": "5"}' --accoun
 
 ```
 
+# Vue
+
+- As explained, in the course I have tried to create an application using Vue as Frontend. 
+- I have used the counter example as the backend with some modifications. 
+    - Have added the following functions: 
+    - add x
+    - subtract x
+    - multiply x
+    - divide x
+    - gettotal
+    - getstorage
+
+- Code to test the contract
+```
+cd rust
+./build.sh
+cargo test -v
+
+export NEAR_ENV=testnet
+export Contract=nearuni.testnet
+near deploy --wasmFile res/counter.wasm --accountId $Contract
+
+near view $Contract get_total
+near view $Contract get_storage
+near call $Contract add '{"amount":"45"}' --accountId $Contract 
+near call $Contract subtract '{"amount":"35"}' --accountId $Contract 
+
+```
+
+After Deploying the contract: 
+
+```
+// Install the repositories
+npm install 
+// Compiles and hot-reloads for development
+npm run serve
+// Compiles and minifies for production
+npm run build
+// Lints and fixes files
+npm run lint
+```

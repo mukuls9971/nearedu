@@ -35,10 +35,33 @@ impl Counter {
     /// ```bash
     /// near view counter.YOU.testnet get_num
     /// ```
-    pub fn get_num(&self) -> i8 {
+    pub fn get_total(&self) -> i8 {
         return self.val;
     }
-
+    pub fn get_storage(&self) -> u64 {
+        return env::storage_usage();
+    }
+    pub fn add(&mut self, x:i8) {
+        self.val += x;
+        let log_message = format!("Increased number to {}", self.val);
+        env::log(log_message.as_bytes());
+    }
+    pub fn subtract(&mut self, x:i8) {
+        self.val -= x;
+        let log_message = format!("Increased number to {}", self.val);
+        env::log(log_message.as_bytes());
+    }
+    pub fn multiply(&mut self, x:i8) {
+        self.val *= x;
+        let log_message = format!("Increased number to {}", self.val);
+        env::log(log_message.as_bytes());
+    }
+    pub fn divide(&mut self, x:i8) {
+        assert_ne!(x,0);
+        self.val /= x;
+        let log_message = format!("Increased number to {}", self.val);
+        env::log(log_message.as_bytes());
+    }
     /// Increment the counter.
     ///
     /// Note, the parameter is "&mut self" as this function modifies state.
@@ -152,9 +175,9 @@ mod tests {
         // instantiate a contract variable with the counter at zero
         let mut contract = Counter { val: 0 };
         contract.increment();
-        println!("Value after increment: {}", contract.get_num());
+        println!("Value after increment: {}", contract.get_total());
         // confirm that we received 1 when calling get_num
-        assert_eq!(1, contract.get_num());
+        assert_eq!(1, contract.get_total());
     }
 
     #[test]
@@ -163,9 +186,9 @@ mod tests {
         testing_env!(context);
         let mut contract = Counter { val: 0 };
         contract.decrement();
-        println!("Value after decrement: {}", contract.get_num());
+        println!("Value after decrement: {}", contract.get_total());
         // confirm that we received -1 when calling get_num
-        assert_eq!(-1, contract.get_num());
+        assert_eq!(-1, contract.get_total());
     }
 
     #[test]
@@ -175,8 +198,44 @@ mod tests {
         let mut contract = Counter { val: 0 };
         contract.increment();
         contract.reset();
-        println!("Value after reset: {}", contract.get_num());
+        println!("Value after reset: {}", contract.get_total());
         // confirm that we received -1 when calling get_num
-        assert_eq!(0, contract.get_num());
+        assert_eq!(0, contract.get_total());
     }
+
+    #[test]
+    fn math_test() {
+        let context = get_context(vec![], false);
+        testing_env!(context);
+        let mut contract = Counter { val: 0 };
+        contract.add(45);
+        println!("Value after addition: {}", contract.get_total());
+        contract.subtract(20);
+        println!("Value after subtraction: {}", contract.get_total());
+        contract.multiply(4);
+        println!("Value after multiply: {}", contract.get_total());
+        contract.divide(7);
+        println!("Value after division: {}", contract.get_total());
+        // confirm that we received -1 when calling get_num
+        assert_eq!(14, contract.get_total());
+    }
+    #[test]
+    #[should_panic]
+    fn math_test_divide0() {
+        let context = get_context(vec![], false);
+        testing_env!(context);
+        let mut contract = Counter { val: 0 };
+        contract.add(45);
+        println!("Value after addition: {}", contract.get_total());
+        contract.subtract(20);
+        println!("Value after subtraction: {}", contract.get_total());
+        contract.multiply(4);
+        println!("Value after multiply: {}", contract.get_total());
+        contract.divide(0);
+        println!("Value after division: {}", contract.get_total());
+        // confirm that we received -1 when calling get_num
+        assert_eq!(10, contract.get_total());
+    }
+
+    
 }
