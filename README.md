@@ -90,10 +90,12 @@ export NEAR_ENV=testnet
 export Contract=nearuni.testnet
 near deploy --wasmFile res/counter.wasm --accountId $Contract
 
+near call $Contract add '{"x":45}' --accountId $Contract
+near call $Contract subtract '{"x":20}' --accountId $Contract
+near call $Contract multiply '{"x":4}' --accountId $Contract
+near call $Contract divide '{"x":7}' --accountId $Contract
 near view $Contract get_total
 near view $Contract get_storage
-near call $Contract add '{"amount":"45"}' --accountId $Contract 
-near call $Contract subtract '{"amount":"35"}' --accountId $Contract 
 
 ```
 
@@ -109,3 +111,9 @@ npm run build
 // Lints and fixes files
 npm run lint
 ```
+
+1. After deploying, in the navigation bar , the four buttons for add, subtract, multiply and divide are visible.
+2. We need to login first to access the change functions because they need transactions. 
+3. We can click on it and check the console for the promise to get completed for the value of contract to be updated. 
+4. Have not added the loading flow due to paucity of time but connection to application are complete. 
+5. Both view and change functions are working as expected. 
