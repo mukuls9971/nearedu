@@ -6,7 +6,8 @@ Two directories:
 3. Vue: Contains the frontend code
 
 Video Description NCD-1: https://www.loom.com/share/985a11930dc14150ae668ceeafc21df8
-Video Description NCD-2: 
+Video Description NCD-2: https://www.loom.com/share/d8484c027ba14597a9372818914a94a0
+
 
 # AssemblyCode
 
@@ -114,6 +115,6 @@ npm run lint
 
 1. After deploying, in the navigation bar , the four buttons for add, subtract, multiply and divide are visible.
 2. We need to login first to access the change functions because they need transactions. 
-3. We can click on it and check the console for the promise to get completed for the value of contract to be updated. 
+3. We can click on the buttons and check the console for the promise to get completed.
 4. Have not added the loading flow but connection to application are complete. 
 5. Both view and change functions are working as expected. 
