@@ -115,5 +115,5 @@ npm run lint
 1. After deploying, in the navigation bar , the four buttons for add, subtract, multiply and divide are visible.
 2. We need to login first to access the change functions because they need transactions. 
 3. We can click on it and check the console for the promise to get completed for the value of contract to be updated. 
-4. Have not added the loading flow due to paucity of time but connection to application are complete. 
+4. Have not added the loading flow but connection to application are complete. 
 5. Both view and change functions are working as expected. 
