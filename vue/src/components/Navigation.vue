@@ -83,7 +83,7 @@ export default {
             subtract: async () => {
             let  response = await  wallet.account().functionCall({
                 contractId: CONTRACT_ID,
-                methodName: "add",
+                methodName: "subtract",
                 args: { x:20 }
             })
             
@@ -92,7 +92,7 @@ export default {
             multiply: async () => {
             let  response = await  wallet.account().functionCall({
                 contractId: CONTRACT_ID,
-                methodName: "add",
+                methodName: "multiply",
                 args: { x:20 }
             })
             
@@ -101,7 +101,7 @@ export default {
             divide: async () => {
             let  response = await  wallet.account().functionCall({
                 contractId: CONTRACT_ID,
-                methodName: "add",
+                methodName: "divide",
                 args: { x:20 }
             })
             

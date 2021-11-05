@@ -118,3 +118,7 @@ npm run lint
 3. We can click on the buttons and check the console for the promise to get completed.
 4. Have not added the loading flow but connection to application are complete. 
 5. Both view and change functions are working as expected. 
+
+### Next Steps:
+1. Can add input block to accept the required value for maths operation
+2. Can add the loading animation so that we know when the operation is completed.
